@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investor Suite · Flip, Rental & Airbnb Calculators · Plutus Estate</title>
+<meta name="description" content="Model your Dubai or Marbella investment in seconds. Flip simulator, long-term rental yield and short-term rental calculators with real market inputs.">
+<link rel="canonical" href="https://plutusestate.com/tools.html">
+<meta property="og:title" content="Investor Suite · Flip, Rental & Airbnb Calculators · Plutus Estate">
+<meta property="og:description" content="Model your Dubai or Marbella investment in seconds. Real market inputs, honest cost lines, instant numbers.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="tools">
+
+<header class="nav" id="nav">
+  <div class="nav-inner wrap">
+    <a class="brand" href="index.html" aria-label="Plutus Estate home">
+      <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15.5" fill="none" stroke="#C9A962" stroke-width="1.4"/><circle cx="17" cy="17" r="12.6" fill="none" stroke="#C9A962" stroke-width="2.2" stroke-dasharray="0.8 2.6" opacity=".55"/><text x="17" y="23" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="17" font-weight="600" fill="#EFD9A7">P</text></svg>
+      <span class="brand-word">PLUTUS<em>ESTATE</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="dubai.html" data-nav="dubai">Dubai</a>
+      <a href="marbella.html" data-nav="marbella">Marbella</a>
+      <a href="properties.html" data-nav="properties">Portfolio</a>
+      <a href="off-market.html" data-nav="off-market">Off-Market</a>
+      <a href="tools.html" data-nav="tools">Investor Suite</a>
+      <a href="services.html" data-nav="services">Services</a>
+      <a href="about.html" data-nav="about">About</a>
+      <a href="guides.html" data-nav="guides" class="m-only">Guides</a>
+      <a href="contact.html" data-nav="contact" class="m-only">Contact</a>
+    </nav>
+    <a class="btn nav-cta" href="contact.html">Book a Consultation</a>
+    <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="hero-media"><img src="https://images.unsplash.com/photo-1526495124232-a04e1849168c?auto=format&fit=crop&w=1800&q=80" alt="Sheikh Zayed Road towers at night" onerror="this.closest('.hero-media')?.classList.add('img-fallback');this.remove()"></div>
+  <div class="hero-veil"></div>
+  <div class="wrap page-hero-inner">
+    <p class="kicker reveal">The Investor Suite</p>
+    <h1 class="h-display reveal delay-1">Run the numbers <em class="gold-text">like we do.</em></h1>
+    <p class="lead reveal delay-2">Three strategies, modelled with the same cost lines we use on real closings. Move the sliders. Watch the profit. Then ask us to find the property that beats the model.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="calc-tabs reveal" role="tablist">
+      <button class="calc-tab active" data-calc="flip" id="tabFlip">01 · Flip Simulator</button>
+      <button class="calc-tab" data-calc="rent" id="tabRent">02 · Long-Term Rental</button>
+      <button class="calc-tab" data-calc="str" id="tabStr">03 · Short-Term Rental</button>
+    </div>
+
+    <!-- ============ FLIP ============ -->
+    <div class="calc-page active" id="calc-flip">
+      <div class="calc-layout">
+        <div class="panel calc-inputs">
+          <div class="preset-row" id="flipPresets">
+            <button class="preset active" data-preset="marina">Dubai · Marina 2-Bed</button>
+            <button class="preset" data-preset="palm">Dubai · Palm Villa</button>
+            <button class="preset" data-preset="marbella">Marbella · Reno Villa</button>
+          </div>
+          <div class="preset-row">
+            <button class="preset active" id="fMktDubai">Market: Dubai</button>
+            <button class="preset" id="fMktMarbella">Market: Marbella</button>
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="fPrice">Purchase price</label><span class="range-val" id="fPriceVal">€620,000</span></div>
+            <input type="range" id="fPrice" min="0" max="100" step="0.1" value="34">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="fDisc">Negotiated below market</label><span class="range-val" id="fDiscVal">14%</span></div>
+            <input type="range" id="fDisc" min="0" max="25" step="0.5" value="14">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="fReno">Renovation budget · % of price</label><span class="range-val" id="fRenoVal">5%</span></div>
+            <input type="range" id="fReno" min="0" max="30" step="1" value="5">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="fUplift">Value uplift from works</label><span class="range-val" id="fUpliftVal">8%</span></div>
+            <input type="range" id="fUplift" min="0" max="40" step="1" value="8">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="fMonths">Months to exit</label><span class="range-val" id="fMonthsVal">9</span></div>
+            <input type="range" id="fMonths" min="3" max="24" step="1" value="9">
+          </div>
+          <p class="calc-note" id="fCostNote">Cost lines applied · Dubai: 6.5% purchase costs (4% DLD, agency, admin), 2% selling costs. All-cash model.</p>
+        </div>
+        <div class="panel corner-frame glow calc-out">
+          <div class="out-hero">
+            <span class="stat-label">Projected Net Profit</span>
+            <span class="out-big pos" id="fProfit">€0</span>
+            <span class="calc-note" id="fProfitSub"></span>
+          </div>
+          <div class="out-grid">
+            <div class="out-cell"><span class="k">Instant equity at purchase</span><span class="v pos" id="fEquity">€0</span></div>
+            <div class="out-cell"><span class="k">Total cash invested</span><span class="v" id="fInvested">€0</span></div>
+            <div class="out-cell"><span class="k">Projected resale</span><span class="v gold" id="fResale">€0</span></div>
+            <div class="out-cell"><span class="k">ROI on cash</span><span class="v gold" id="fRoi">0%</span></div>
+            <div class="out-cell"><span class="k">Annualized return</span><span class="v gold" id="fAnnual">0%</span></div>
+            <div class="out-cell"><span class="k">Profit per month held</span><span class="v" id="fPerMonth">€0</span></div>
+          </div>
+          <div class="bar-compare">
+            <div class="bar-row"><span class="bar-k"><span>Cash In</span><b id="fBarInVal">€0</b></span><div class="bar-track"><div class="bar-fill" id="fBarIn" style="width:60%"></div></div></div>
+            <div class="bar-row"><span class="bar-k"><span>Cash Out at Exit</span><b id="fBarOutVal">€0</b></span><div class="bar-track"><div class="bar-fill green" id="fBarOut" style="width:80%"></div></div></div>
+          </div>
+          <div class="verdict"><span class="k">Plutus Verdict</span><span class="v" id="fVerdict"></span></div>
+          <a class="btn" href="contact.html">Find Me a Deal Like This</a>
+          <p class="calc-note">Illustrative model, not advice. Actual discounts, costs and resale values vary per property and market moment.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ LONG-TERM RENTAL ============ -->
+    <div class="calc-page" id="calc-rent">
+      <div class="calc-layout">
+        <div class="panel calc-inputs">
+          <div class="preset-row" id="rentPresets">
+            <button class="preset" data-preset="jvc">Dubai · JVC Studio</button>
+            <button class="preset active" data-preset="marina">Dubai · Marina 2-Bed</button>
+            <button class="preset" data-preset="downtown">Dubai · Downtown 1-Bed</button>
+            <button class="preset" data-preset="goldenmile">Marbella · Golden Mile Apt</button>
+            <button class="preset" data-preset="andalucia">Marbella · Golf Villa</button>
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="rPrice">Purchase price</label><span class="range-val" id="rPriceVal">€620,000</span></div>
+            <input type="range" id="rPrice" min="0" max="100" step="0.1" value="34">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="rYield">Gross rental yield</label><span class="range-val" id="rYieldVal">7.0%</span></div>
+            <input type="range" id="rYield" min="2" max="12" step="0.1" value="7">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="rCosts">Running costs · % of rent</label><span class="range-val" id="rCostsVal">22%</span></div>
+            <input type="range" id="rCosts" min="8" max="40" step="1" value="22">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="rOcc">Occupancy</label><span class="range-val" id="rOccVal">97%</span></div>
+            <input type="range" id="rOcc" min="80" max="100" step="1" value="97">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="rApp">Price &amp; rent growth per year</label><span class="range-val" id="rAppVal">6%</span></div>
+            <input type="range" id="rApp" min="0" max="12" step="0.5" value="6">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="rYears">Holding period</label><span class="range-val" id="rYearsVal">10 years</span></div>
+            <input type="range" id="rYears" min="5" max="25" step="1" value="10">
+          </div>
+          <p class="calc-note">Running costs cover service charges, management, insurance and maintenance. Dubai tenants typically pay yearly upfront in 1 to 4 cheques.</p>
+        </div>
+        <div class="panel corner-frame glow calc-out">
+          <div class="out-hero">
+            <span class="stat-label">Net Income Per Year</span>
+            <span class="out-big pos" id="rNet">€0</span>
+            <span class="calc-note" id="rNetSub"></span>
+          </div>
+          <div class="out-grid">
+            <div class="out-cell"><span class="k">Monthly net income</span><span class="v pos" id="rMonthly">€0</span></div>
+            <div class="out-cell"><span class="k">Net yield on price</span><span class="v gold" id="rNetYield">0%</span></div>
+            <div class="out-cell"><span class="k">Property value in <span id="rYrsLabel1">10</span>y</span><span class="v gold" id="rFutureVal">€0</span></div>
+            <div class="out-cell"><span class="k">Rent collected over <span id="rYrsLabel2">10</span>y</span><span class="v" id="rCumRent">€0</span></div>
+          </div>
+          <div>
+            <span class="stat-label" style="display:block;margin-bottom:10px">Total wealth projection</span>
+            <svg class="spark" viewBox="0 0 600 150" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A962" stop-opacity=".35"/><stop offset="1" stop-color="#C9A962" stop-opacity="0"/></linearGradient></defs>
+              <polygon class="area" id="rArea" points=""></polygon>
+              <polyline id="rLine" points=""></polyline>
+            </svg>
+          </div>
+          <div class="verdict"><span class="k">Plutus Verdict</span><span class="v" id="rVerdict"></span></div>
+          <a class="btn" href="contact.html">Show Me High-Yield Units</a>
+          <p class="calc-note">Projection assumes rent and value grow at the same rate and excludes purchase costs and taxes on income. Illustrative, not advice.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SHORT-TERM RENTAL ============ -->
+    <div class="calc-page" id="calc-str">
+      <div class="calc-layout">
+        <div class="panel calc-inputs">
+          <div class="preset-row" id="strPresets">
+            <button class="preset" data-preset="jvc">Dubai · JVC Studio</button>
+            <button class="preset active" data-preset="marina">Dubai · Marina 2-Bed</button>
+            <button class="preset" data-preset="palm">Dubai · Palm Villa</button>
+            <button class="preset" data-preset="goldenmile">Marbella · Golden Mile Apt</button>
+            <button class="preset" data-preset="andalucia">Marbella · Golf Villa</button>
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="sPrice">Purchase price</label><span class="range-val" id="sPriceVal">€620,000</span></div>
+            <input type="range" id="sPrice" min="0" max="100" step="0.1" value="34">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="sAdr">Average nightly rate</label><span class="range-val" id="sAdrVal">€210</span></div>
+            <input type="range" id="sAdr" min="50" max="1500" step="10" value="210">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="sOcc">Occupancy</label><span class="range-val" id="sOccVal">82%</span></div>
+            <input type="range" id="sOcc" min="35" max="95" step="1" value="82">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="sCosts">Operating costs · % of revenue</label><span class="range-val" id="sCostsVal">28%</span></div>
+            <input type="range" id="sCosts" min="15" max="50" step="1" value="28">
+          </div>
+          <p class="calc-note">Operating costs cover management (15 to 25%), cleaning, platform fees, utilities and licensing. Dubai holiday homes are regulated by DET; Andalusia requires a VUT licence.</p>
+        </div>
+        <div class="panel corner-frame glow calc-out">
+          <div class="out-hero">
+            <span class="stat-label">Net Income Per Year</span>
+            <span class="out-big pos" id="sNet">€0</span>
+            <span class="calc-note" id="sNetSub"></span>
+          </div>
+          <div class="out-grid">
+            <div class="out-cell"><span class="k">Annual revenue</span><span class="v gold" id="sRevenue">€0</span></div>
+            <div class="out-cell"><span class="k">Booked nights</span><span class="v" id="sNights">0</span></div>
+            <div class="out-cell"><span class="k">Net yield on price</span><span class="v gold" id="sYield">0%</span></div>
+            <div class="out-cell"><span class="k">Monthly net average</span><span class="v pos" id="sMonthly">€0</span></div>
+          </div>
+          <div class="bar-compare">
+            <div class="bar-row"><span class="bar-k"><span>Short-Term Net / Year</span><b id="sBarStrVal">€0</b></span><div class="bar-track"><div class="bar-fill green" id="sBarStr" style="width:80%"></div></div></div>
+            <div class="bar-row"><span class="bar-k"><span>Long-Term Net / Year <span style="text-transform:none">(same unit)</span></span><b id="sBarLtVal">€0</b></span><div class="bar-track"><div class="bar-fill" id="sBarLt" style="width:55%"></div></div></div>
+          </div>
+          <div class="verdict"><span class="k">Plutus Verdict</span><span class="v" id="sVerdict"></span></div>
+          <a class="btn" href="contact.html">Find Me a Short-Term Winner</a>
+          <p class="calc-note">Long-term comparison uses the yield set in calculator 02. Seasonality matters: Marbella concentrates revenue May to October. Illustrative, not advice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Under the Hood</p>
+      <h2 class="h2">Honest models beat <em class="gold-text">pretty promises.</em></h2>
+      <p class="lead">Most calculators online quote gross numbers to flatter the sale. Ours deduct every cost we see on real closings. If the model says a deal is thin, we tell you to walk.</p>
+    </div>
+    <div style="max-width:860px">
+      <details class="accord reveal">
+        <summary>Which purchase costs do the models apply?</summary>
+        <div class="accord-body"><p>Dubai: 4% DLD transfer fee, about 2% agency and roughly AED 4,200 in trustee and admin fees, modelled as 6.5% all-in. Marbella: 7% ITP on resales (or 10% VAT plus 1.2% AJD on new build), notary, registry and legal fees, modelled as 11.5% all-in.</p></div>
+      </details>
+      <details class="accord reveal">
+        <summary>Where do the yield presets come from?</summary>
+        <div class="accord-body"><p>Historical gross yields by area: Downtown Dubai around 6%, Dubai Marina around 7%, JVC 9 to 10%, Marbella long-term 4 to 6% with short-term grossing 8 to 10% in peak zones. We refresh presets against portal data and our own closings.</p></div>
+      </details>
+      <details class="accord reveal">
+        <summary>What do the models leave out?</summary>
+        <div class="accord-body"><p>Financing, personal taxation in your home country, currency movement and void periods beyond the occupancy slider. In a consultation we model your exact situation, including mortgage leverage and tax residency.</p></div>
+      </details>
+      <details class="accord reveal">
+        <summary>How solid are these numbers?</summary>
+        <div class="accord-body"><p>No. They are illustrative projections built on historical data. Markets move. That is exactly why buying below market matters: the discount is your margin of safety on day one.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-inner reveal">
+    <p class="kicker">From Model to Keys</p>
+    <h2 class="h-display">The model shows the margin. <em class="gold-text">We find the property.</em></h2>
+    <p class="lead">Send us your numbers. Within 72 hours you get a shortlist of real units that fit or beat them.</p>
+    <div class="hero-cta-row"><a class="btn btn-lg" href="contact.html">Book a Private Consultation</a><a class="btn btn-ghost btn-lg" href="off-market.html">See Off-Market Deals</a></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a class="brand" href="index.html" aria-label="Plutus Estate home">
+          <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15.5" fill="none" stroke="#C9A962" stroke-width="1.4"/><circle cx="17" cy="17" r="12.6" fill="none" stroke="#C9A962" stroke-width="2.2" stroke-dasharray="0.8 2.6" opacity=".55"/><text x="17" y="23" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="17" font-weight="600" fill="#EFD9A7">P</text></svg>
+          <span class="brand-word">PLUTUS<em>ESTATE</em></span>
+        </a>
+        <p>Private real estate advisory for Dubai and Marbella. Off-market access, distressed opportunities and disciplined negotiation for international investors.</p>
+        <a class="btn btn-ghost" href="contact.html">Book a Consultation</a>
+      </div>
+      <div class="f-col">
+        <h4>Markets</h4>
+        <a href="dubai.html">Dubai</a>
+        <a href="marbella.html">Marbella</a>
+        <a href="properties.html">Portfolio</a>
+        <a href="off-market.html">Off-Market Deals</a>
+      </div>
+      <div class="f-col">
+        <h4>Company</h4>
+        <a href="services.html">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="guides.html">Investor Guides</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="f-col">
+        <h4>Investor Suite</h4>
+        <a href="tools.html#flip">Flip Calculator</a>
+        <a href="tools.html#rent">Long-Term Rental</a>
+        <a href="tools.html#str">Short-Term Rental</a>
+        <a href="mailto:hello@plutusestate.com">hello@plutusestate.com</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>© 2026 Plutus Estate · plutusestate.com · Dubai & Marbella</p>
+      <p class="disclaimer">All figures, yields and projections on this site are illustrative estimates based on historical market data and third-party sources. They are not a guarantee of future performance and do not constitute financial, tax or investment advice. Property values can fall as well as rise. Always obtain independent advice before investing.</p>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/calc.js"></script>
+</body>
+</html>
