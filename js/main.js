@@ -7,11 +7,12 @@
     document.documentElement.classList.add('capture');
   }
 
-  /* Nav scroll state */
+  /* Nav scroll state (404 keeps the solid nav permanently) */
   var nav = document.getElementById('nav');
+  var solidNav = document.body.getAttribute('data-page') === '404';
   function onScroll() {
     if (!nav) return;
-    if (window.scrollY > 24) nav.classList.add('scrolled');
+    if (window.scrollY > 24 || solidNav) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   }
   window.addEventListener('scroll', onScroll, { passive: true });

@@ -93,7 +93,7 @@
   }
 
   var FLIP_PRESETS = {
-    marina: { price: 620000, disc: 14, reno: 5, uplift: 8, months: 9, market: 'dubai' },
+    marina: { price: 620000, disc: 20, reno: 6, uplift: 18, months: 9, market: 'dubai' },
     palm: { price: 5900000, disc: 18, reno: 10, uplift: 15, months: 12, market: 'dubai' },
     marbella: { price: 1200000, disc: 8, reno: 25, uplift: 32, months: 14, market: 'marbella' }
   };
@@ -243,7 +243,7 @@
   }
 
   var STR_PRESETS = {
-    jvc: { price: 160000, adr: 90, occ: 78, costs: 30 },
+    jvc: { price: 160000, adr: 120, occ: 78, costs: 30 },
     marina: { price: 620000, adr: 210, occ: 82, costs: 28 },
     palm: { price: 5900000, adr: 1100, occ: 70, costs: 30 },
     goldenmile: { price: 850000, adr: 320, occ: 62, costs: 30 },
@@ -263,6 +263,84 @@
     });
   });
 
+  /* =================== OFF-PLAN =================== */
+  var oDldPromo = false;
+
+  function calcOffplan() {
+    var P = priceFromT(parseFloat($('oPrice').value));
+    var paid = parseFloat($('oPaid').value) / 100;
+    var months = parseInt($('oMonths').value, 10);
+    var uplift = parseFloat($('oUplift').value) / 100;
+    var dldCost = oDldPromo ? P * 0.005 : P * 0.042;
+
+    var deployed = P * paid + dldCost;
+    var value = P * (1 + uplift);
+    var proceeds = value * 0.98 - (1 - paid) * P;
+    var profit = proceeds - deployed;
+    var roi = profit / deployed;
+    var annualized = Math.pow(1 + Math.max(roi, -0.99), 12 / months) - 1;
+    var leverage = P / deployed;
+
+    $('oPriceVal').textContent = fmt(P);
+    $('oPaidVal').textContent = pct(paid * 100, 0);
+    $('oMonthsVal').textContent = months;
+    $('oUpliftVal').textContent = pct(uplift * 100, 0);
+
+    var profitEl = $('oProfit');
+    profitEl.textContent = fmt(profit);
+    profitEl.classList.toggle('pos', profit >= 0);
+    profitEl.classList.toggle('neg', profit < 0);
+    $('oProfitSub').textContent = 'Resale at ' + fmtShort(value) + ' with ' + pct((1 - paid) * 100, 0) + ' of instalments assigned to your buyer';
+    $('oMonthly').textContent = fmt(P * paid / months);
+    $('oDeployed').textContent = fmtShort(deployed);
+    $('oValue').textContent = fmtShort(value);
+    $('oLeverage').textContent = '€' + leverage.toFixed(2);
+    $('oRoi').textContent = pct(roi * 100);
+    $('oAnnual').textContent = pct(annualized * 100);
+
+    var maxBar = Math.max(deployed, proceeds, 1);
+    $('oBarIn').style.width = (deployed / maxBar * 100) + '%';
+    $('oBarOut').style.width = (Math.max(proceeds, 0) / maxBar * 100) + '%';
+    $('oBarInVal').textContent = fmtShort(deployed);
+    $('oBarOutVal').textContent = fmtShort(proceeds);
+
+    var verdict;
+    if (profit <= 0) verdict = 'Below breakeven at these settings. Either the entry price, the uplift or the DLD terms must improve. That is a negotiation, and it is ours.';
+    else if (annualized >= 0.15) verdict = 'The staged plan let you capture the uplift on the full ' + fmtShort(P) + ' while deploying only ' + fmtShort(deployed) + '. That is the off-plan leverage effect at its best.';
+    else if (annualized >= 0.08) verdict = 'Solid. Allocation quality decides everything here: the pre-launch price we secure is usually the entire margin.';
+    else verdict = 'Workable but thin. A better launch price or a developer DLD promo changes this picture fast. Ask us what is opening this quarter.';
+    $('oVerdict').textContent = verdict;
+  }
+
+  var OFFPLAN_PRESETS = {
+    creek: { price: 390000, paid: 40, months: 18, uplift: 12, promo: false },
+    jvc: { price: 160000, paid: 70, months: 18, uplift: 8, promo: true },
+    marina: { price: 620000, paid: 60, months: 30, uplift: 12, promo: false }
+  };
+
+  function setOffplanDld(promo) {
+    oDldPromo = promo;
+    $('oDldPay').classList.toggle('active', !promo);
+    $('oDldPromo').classList.toggle('active', promo);
+    calcOffplan();
+  }
+
+  ['oPrice', 'oPaid', 'oMonths', 'oUplift'].forEach(function (id) { on($(id), calcOffplan); });
+  $('oDldPay').addEventListener('click', function () { setOffplanDld(false); });
+  $('oDldPromo').addEventListener('click', function () { setOffplanDld(true); });
+  document.querySelectorAll('#offplanPresets .preset').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('#offplanPresets .preset').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var p = OFFPLAN_PRESETS[btn.getAttribute('data-preset')];
+      setRange($('oPrice'), tFromPrice(p.price));
+      setRange($('oPaid'), p.paid);
+      setRange($('oMonths'), p.months);
+      setRange($('oUplift'), p.uplift);
+      setOffplanDld(p.promo);
+    });
+  });
+
   /* =================== TABS =================== */
   var tabs = document.querySelectorAll('.calc-tab');
   function activate(name, updateHash) {
@@ -277,7 +355,7 @@
   });
   function goToHash(scroll) {
     var h = (location.hash || '').replace('#', '');
-    if (h === 'rent' || h === 'str' || h === 'flip') {
+    if (h === 'rent' || h === 'str' || h === 'flip' || h === 'offplan') {
       activate(h, false);
       if (scroll) {
         var bar = document.querySelector('.calc-tabs');
@@ -292,7 +370,9 @@
   setRange($('fPrice'), tFromPrice(620000));
   setRange($('rPrice'), tFromPrice(620000));
   setRange($('sPrice'), tFromPrice(620000));
+  setRange($('oPrice'), tFromPrice(390000));
   calcFlip();
   calcRent();
   calcStr();
+  calcOffplan();
 })();

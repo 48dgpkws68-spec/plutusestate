@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07070A">
 <title>Investor Suite · Flip, Rental & Airbnb Calculators · Plutus Estate</title>
 <meta name="description" content="Model your Dubai or Marbella investment in seconds. Flip simulator, long-term rental yield and short-term rental calculators with real market inputs.">
 <link rel="canonical" href="https://plutusestate.com/tools.html">
@@ -31,7 +32,8 @@
       <a href="off-market.html" data-nav="off-market">Off-Market</a>
       <a href="tools.html" data-nav="tools">Investor Suite</a>
       <a href="services.html" data-nav="services">Services</a>
-      <a href="about.html" data-nav="about">About</a>
+      <a href="case-studies.html" data-nav="case-studies">Case Studies</a>
+      <a href="about.html" data-nav="about" class="m-only">About</a>
       <a href="guides.html" data-nav="guides" class="m-only">Guides</a>
       <a href="contact.html" data-nav="contact" class="m-only">Contact</a>
     </nav>
@@ -46,7 +48,7 @@
   <div class="wrap page-hero-inner">
     <p class="kicker reveal">The Investor Suite</p>
     <h1 class="h-display reveal delay-1">Run the numbers <em class="gold-text">like we do.</em></h1>
-    <p class="lead reveal delay-2">Three strategies, modelled with the same cost lines we use on real closings. Move the sliders. Watch the profit. Then ask us to find the property that beats the model.</p>
+    <p class="lead reveal delay-2">Four strategies, modelled with the same cost lines we use on real closings. Move the sliders. Watch the profit. Then ask us to find the property that beats the model.</p>
   </div>
 </section>
 
@@ -56,6 +58,7 @@
       <button class="calc-tab active" data-calc="flip" id="tabFlip">01 · Flip Simulator</button>
       <button class="calc-tab" data-calc="rent" id="tabRent">02 · Long-Term Rental</button>
       <button class="calc-tab" data-calc="str" id="tabStr">03 · Short-Term Rental</button>
+      <button class="calc-tab" data-calc="offplan" id="tabOffplan">04 · Off-Plan Simulator</button>
     </div>
 
     <!-- ============ FLIP ============ -->
@@ -76,16 +79,16 @@
             <input type="range" id="fPrice" min="0" max="100" step="0.1" value="34">
           </div>
           <div class="range-row">
-            <div class="range-head"><label for="fDisc">Negotiated below market</label><span class="range-val" id="fDiscVal">14%</span></div>
-            <input type="range" id="fDisc" min="0" max="25" step="0.5" value="14">
+            <div class="range-head"><label for="fDisc">Negotiated below market</label><span class="range-val" id="fDiscVal">20%</span></div>
+            <input type="range" id="fDisc" min="0" max="25" step="0.5" value="20">
           </div>
           <div class="range-row">
-            <div class="range-head"><label for="fReno">Renovation budget · % of price</label><span class="range-val" id="fRenoVal">5%</span></div>
-            <input type="range" id="fReno" min="0" max="30" step="1" value="5">
+            <div class="range-head"><label for="fReno">Renovation budget · % of price</label><span class="range-val" id="fRenoVal">6%</span></div>
+            <input type="range" id="fReno" min="0" max="30" step="1" value="6">
           </div>
           <div class="range-row">
-            <div class="range-head"><label for="fUplift">Value uplift from works</label><span class="range-val" id="fUpliftVal">8%</span></div>
-            <input type="range" id="fUplift" min="0" max="40" step="1" value="8">
+            <div class="range-head"><label for="fUplift">Value uplift from works</label><span class="range-val" id="fUpliftVal">18%</span></div>
+            <input type="range" id="fUplift" min="0" max="40" step="1" value="18">
           </div>
           <div class="range-row">
             <div class="range-head"><label for="fMonths">Months to exit</label><span class="range-val" id="fMonthsVal">9</span></div>
@@ -233,6 +236,62 @@
         </div>
       </div>
     </div>
+
+    <!-- ============ OFF-PLAN ============ -->
+    <div class="calc-page" id="calc-offplan">
+      <div class="calc-layout">
+        <div class="panel calc-inputs">
+          <div class="preset-row" id="offplanPresets">
+            <button class="preset active" data-preset="creek">Dubai · Creek 1-Bed</button>
+            <button class="preset" data-preset="jvc">Dubai · JVC Studio</button>
+            <button class="preset" data-preset="marina">Dubai · Branded 2-Bed</button>
+          </div>
+          <div class="preset-row">
+            <button class="preset active" id="oDldPay">DLD: you pay 4%</button>
+            <button class="preset" id="oDldPromo">DLD: developer promo</button>
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="oPrice">Launch price</label><span class="range-val" id="oPriceVal">€390,000</span></div>
+            <input type="range" id="oPrice" min="0" max="100" step="0.1" value="25">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="oPaid">Paid in by the time you exit</label><span class="range-val" id="oPaidVal">40%</span></div>
+            <input type="range" id="oPaid" min="30" max="100" step="5" value="40">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="oMonths">Months to exit</label><span class="range-val" id="oMonthsVal">18</span></div>
+            <input type="range" id="oMonths" min="6" max="48" step="1" value="18">
+          </div>
+          <div class="range-row">
+            <div class="range-head"><label for="oUplift">Market uplift at exit</label><span class="range-val" id="oUpliftVal">12%</span></div>
+            <input type="range" id="oUplift" min="0" max="25" step="1" value="12">
+          </div>
+          <p class="calc-note">Dubai off-plan model: staged payments held in RERA escrow, 8 to 12% typical uplift at handover in strong cycles. Resale before handover assigns the remaining instalments to your buyer.</p>
+        </div>
+        <div class="panel corner-frame glow calc-out">
+          <div class="out-hero">
+            <span class="stat-label">Projected Net Profit at Exit</span>
+            <span class="out-big pos" id="oProfit">€0</span>
+            <span class="calc-note" id="oProfitSub"></span>
+          </div>
+          <div class="out-grid">
+            <div class="out-cell"><span class="k">Monthly commitment</span><span class="v" id="oMonthly">€0</span></div>
+            <div class="out-cell"><span class="k">Cash deployed at exit</span><span class="v" id="oDeployed">€0</span></div>
+            <div class="out-cell"><span class="k">Exit value</span><span class="v gold" id="oValue">€0</span></div>
+            <div class="out-cell"><span class="k">You control per €1 in</span><span class="v gold" id="oLeverage">€0</span></div>
+            <div class="out-cell"><span class="k">ROI on cash</span><span class="v gold" id="oRoi">0%</span></div>
+            <div class="out-cell"><span class="k">Annualized return</span><span class="v gold" id="oAnnual">0%</span></div>
+          </div>
+          <div class="bar-compare">
+            <div class="bar-row"><span class="bar-k"><span>Cash Deployed</span><b id="oBarInVal">€0</b></span><div class="bar-track"><div class="bar-fill" id="oBarIn" style="width:40%"></div></div></div>
+            <div class="bar-row"><span class="bar-k"><span>Net Proceeds at Exit</span><b id="oBarOutVal">€0</b></span><div class="bar-track"><div class="bar-fill green" id="oBarOut" style="width:60%"></div></div></div>
+          </div>
+          <div class="verdict"><span class="k">Plutus Verdict</span><span class="v" id="oVerdict"></span></div>
+          <a class="btn" href="contact.html">Show Me the Next Launch</a>
+          <p class="calc-note">Illustrative model, not advice. Uplift depends on project, developer and cycle. We secure allocations before public launch; that entry price is the real edge.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -291,10 +350,13 @@
         <a href="marbella.html">Marbella</a>
         <a href="properties.html">Portfolio</a>
         <a href="off-market.html">Off-Market Deals</a>
+        <a href="compare.html">Dubai vs Marbella</a>
+        <a href="golden-visa.html">Golden Visa</a>
       </div>
       <div class="f-col">
         <h4>Company</h4>
         <a href="services.html">Services</a>
+        <a href="case-studies.html">Case Studies</a>
         <a href="about.html">About Us</a>
         <a href="guides.html">Investor Guides</a>
         <a href="contact.html">Contact</a>
@@ -304,6 +366,7 @@
         <a href="tools.html#flip">Flip Calculator</a>
         <a href="tools.html#rent">Long-Term Rental</a>
         <a href="tools.html#str">Short-Term Rental</a>
+        <a href="tools.html#offplan">Off-Plan Simulator</a>
         <a href="mailto:hello@plutusestate.com">hello@plutusestate.com</a>
       </div>
     </div>
