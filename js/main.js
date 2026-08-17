@@ -7,6 +7,22 @@
     document.documentElement.classList.add('capture');
   }
 
+  /* WhatsApp floating button (injected on every page) */
+  (function () {
+    if (document.querySelector('.wa-float')) return;
+    var msg = encodeURIComponent('Hi Plutus Estate, I would like to talk about property in Dubai / Marbella.');
+    var a = document.createElement('a');
+    a.className = 'wa-float';
+    a.href = 'https://wa.me/31634333809?text=' + msg;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.setAttribute('aria-label', 'Chat with us on WhatsApp');
+    a.innerHTML =
+      '<span class="wa-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.7 2.2 14 2.2 12.2 2.2 6.8 6.6 2.4 12 2.4s9.8 4.4 9.8 9.8-4.4 9.6-9.8 9.6zm8.4-18C18.2 1.6 15.2.4 12 .4 5.5.4.2 5.7.2 12.2c0 2.1.5 4.1 1.6 5.9L0 24l6.1-1.6c1.7.9 3.7 1.4 5.9 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.1-1.2-6.1-3.4-8.2z"/></svg></span>' +
+      '<span>WhatsApp<small>Reply within the hour</small></span>';
+    document.body.appendChild(a);
+  })();
+
   /* Nav scroll state (404 keeps the solid nav permanently) */
   var nav = document.getElementById('nav');
   var solidNav = document.body.getAttribute('data-page') === '404';
