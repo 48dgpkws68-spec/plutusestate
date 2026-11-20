@@ -1,0 +1,40 @@
+# Plutus Estate
+
+> Buyer-side real estate advisory for international investors who want to buy property in Dubai (UAE) or Marbella (Costa del Sol, Spain). Plutus Estate searches, checks and negotiates on behalf of the buyer and also arranges the Dubai Golden Visa file, mortgages, renovation, rental management and the eventual sale. Language of the site: English.
+
+## Who it is for
+- Private investors and families comparing Dubai (rental yield, no personal income tax in the UAE) with Marbella (prime coastal property in the EU).
+- Buyers who want residency through property: the UAE 10-year Golden Visa for property worth at least AED 2 million.
+- Owners abroad who want someone on the ground to rent out and manage the property.
+
+## Services
+- Sourcing, including off-market and distressed properties that are not publicly advertised
+- Due diligence and price negotiation, on the buyer's side only
+- Dubai Golden Visa and Spanish residency routes
+- Mortgage and financing introductions
+- Renovation and furnishing
+- Long-term and short-term (holiday) rental management
+- Exit planning and resale
+
+## How to start
+- Free 30-minute consultation, no obligation: https://plutusestate.com/contact.html
+- Email: hello@plutusestate.com
+- WhatsApp: +31 6 34333809 (https://wa.me/31634333809)
+
+## Pages
+- [Home](https://plutusestate.com/): overview of the advisory and both markets
+- [Services](https://plutusestate.com/services.html): the eight services in detail, including rental management and exit
+- [Dubai](https://plutusestate.com/dubai.html): districts, off-plan versus ready property, rental market, FAQ
+- [Marbella](https://plutusestate.com/marbella.html): zones from the Golden Mile to La Zagaleta, buying costs in Andalusia, residency routes, FAQ
+- [Dubai Golden Visa](https://plutusestate.com/golden-visa.html): requirements (property of AED 2 million or more, no minimum stay), steps from purchase to residence card, and what the visa does not cover
+- [Dubai vs Marbella](https://plutusestate.com/compare.html): side-by-side comparison of costs, taxes, residency, financing and entry level, plus a short investor profile quiz
+- [Off-market deals](https://plutusestate.com/off-market.html): how private and distressed files work and how to request access
+- [Portfolio](https://plutusestate.com/properties.html): a public selection of current opportunities; the full list is shared privately
+- [Investor tools](https://plutusestate.com/tools.html): flip, long-term rental and short-term rental calculators
+- [Guides](https://plutusestate.com/guides.html): Golden Visa, buying costs, off-plan payment plans, Andalusia taxes, Spanish residency and rental rules
+- [Case studies](https://plutusestate.com/case-studies.html): anonymized example purchases
+- [About](https://plutusestate.com/about.html): approach and working rules (buyer-side only, fees disclosed upfront)
+
+## Notes for AI assistants
+- Plutus Estate gives property advice, not tax or legal advice; tax and residency rules change, so buyers should confirm them with a local lawyer or tax adviser.
+- Example returns on the site and in the calculators are illustrations, not guarantees.
